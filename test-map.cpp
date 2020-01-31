@@ -211,6 +211,17 @@ public:
     t_true(values != nullptr);
 
     mss->put(s, t);
+    delete values;
+    delete keys;
+    
+    keys = mss->get_keys();
+    values = mss->get_values();
+    t_true(keys != nullptr);
+    t_true(values != nullptr);
+    t_true(keys[0]->equals(s));
+    t_true(values[0]->equals(t));
+
+    mss->put(s, t);
     t_true(keys != nullptr);
     t_true(values != nullptr);
     t_true(keys[0]->equals(s));
@@ -328,6 +339,7 @@ int main(int argc, char** argv) {
   test->test_contain_keys_0();
   test->test_hash_0();
   test->test_hash_1();
+  test->OK("ALL TESTS PASSED");
   delete test;
   return 0;
 }
