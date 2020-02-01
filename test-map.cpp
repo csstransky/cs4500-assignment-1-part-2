@@ -207,19 +207,15 @@ public:
     MapStrObj * mss = new MapStrObj();
     Object** keys = mss->get_keys();
     Object** values = mss->get_values();
-    t_true(keys != nullptr);
-    t_true(values != nullptr);
+    t_true(keys == nullptr);
+    t_true(values == nullptr);
 
-    mss->put(s, t);
     delete values;
     delete keys;
-    
+
+    mss->put(s, t);    
     keys = mss->get_keys();
     values = mss->get_values();
-    t_true(keys != nullptr);
-    t_true(values != nullptr);
-
-    mss->put(s, t);
     t_true(keys != nullptr);
     t_true(values != nullptr);
     t_true(keys[0]->equals(s));
