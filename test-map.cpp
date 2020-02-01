@@ -218,8 +218,6 @@ public:
     values = mss->get_values();
     t_true(keys != nullptr);
     t_true(values != nullptr);
-    t_true(keys[0]->equals(s));
-    t_true(values[0]->equals(t));
 
     mss->put(s, t);
     t_true(keys != nullptr);
